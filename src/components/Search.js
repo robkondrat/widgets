@@ -19,8 +19,18 @@ const Search = () => {
       setResults(data.query.search);
     };
 
-    if (term) {
+    if (term && !results.length) {
       search();
+    } else {
+      const timeoutId = setTimeout(() => {
+        if (term) {
+          search();
+        }
+      }, 500);
+  
+      return () => {
+        clearTimeout(timeoutId);
+      };
     }
   }, [term]);
 
@@ -28,7 +38,7 @@ const Search = () => {
     return (
       <div key={result.pageid} className="item">
         <div className="right floated content">
-          <a className="ui button" target="_blank" href={`https://en.wikipedia.org?curid=${result.pageid}`}>Go</a>
+          <a className="ui button" target="_blank" rel="noreferrer" href={`https://en.wikipedia.org?curid=${result.pageid}`}>Go</a>
         </div>
         <div className="content">
           <div className="header">
