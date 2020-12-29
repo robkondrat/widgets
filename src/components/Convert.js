@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 const Convert = ({ language, text }) => {
   const [translated, setTranslated] = useState('');
   const [debouncedText, setDebouncedText] = useState(text);
@@ -21,7 +23,7 @@ const Convert = ({ language, text }) => {
         params: {
           q: debouncedText,
           target: language.value,
-          key: 'AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM'
+          key: API_KEY
         }
       });
 
