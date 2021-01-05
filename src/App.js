@@ -4,6 +4,7 @@ import Search from './components/Search';
 import Dropdown from './components/Dropdown';
 import Translate from './components/Translate';
 import Route from './components/Route';
+import Header from './components/Header';
 
 const items = [
   {
@@ -67,14 +68,7 @@ export default () => {
   
   return (
     <div>
-      {/* <button onClick={() => setShowDropdown(!showDropdown)}>Toggle Dropdown</button>
-      {showDropdown ? 
-        <Dropdown 
-          selected={selected}
-          onSelectedChange={setSelected} 
-          options={options} 
-        /> : null
-      } */}
+      <Header />
       <Route path="/">
         <Accordion items={items} />
       </Route>
